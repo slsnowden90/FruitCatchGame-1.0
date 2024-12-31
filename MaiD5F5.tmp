@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://dgudwhedvs1ea"]
+
+[ext_resource type="Script" path="res://Scripts/Basket.gd" id="1_d0tcw"]
+[ext_resource type="Texture2D" uid="uid://che82q8wwannu" path="res://Assets/basket.png" id="2_iwhb3"]
+[ext_resource type="Script" path="res://Scripts/Spawner.gd" id="3_skaj7"]
+[ext_resource type="PackedScene" uid="uid://b4nsj5mrbdm4s" path="res://Fruit.tscn" id="4_njbj4"]
+[ext_resource type="Script" path="res://FallDetector.gd" id="5_twjem"]
+[ext_resource type="Script" path="res://UI.gd" id="6_gydwi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fa1db"]
+size = Vector2(129.912, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pch63"]
+size = Vector2(37.3002, 20)
+
+[node name="Main" type="Node2D"]
+scale = Vector2(0.512101, 1.46517)
+
+[node name="Basket" type="CharacterBody2D" parent="."]
+position = Vector2(3.90548, -46.4109)
+scale = Vector2(0.983685, 1.01367)
+script = ExtResource("1_d0tcw")
+move_speed = null
+x_min = null
+x_max = null
+
+[node name="Sprite2D" type="Sprite2D" parent="Basket"]
+position = Vector2(617.375, 574.334)
+scale = Vector2(2.37214, 0.909688)
+texture = ExtResource("2_iwhb3")
+
+[node name="CatchArea2D" type="Area2D" parent="Basket"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Basket/CatchArea2D"]
+position = Vector2(619.36, 577.027)
+scale = Vector2(1.57271, 1.23177)
+shape = SubResource("RectangleShape2D_fa1db")
+
+[node name="FruitSpawner" type="Node2D" parent="."]
+position = Vector2(-886.544, -134.455)
+scale = Vector2(0.91253, 0.748847)
+script = ExtResource("3_skaj7")
+fruit_scene = ExtResource("4_njbj4")
+spawn_interval = 2.0
+
+[node name="FallDetector" type="Area2D" parent="."]
+position = Vector2(7.81097, 632.007)
+scale = Vector2(17.0906, 1)
+script = ExtResource("5_twjem")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FallDetector"]
+position = Vector2(33.9347, -6.14258)
+scale = Vector2(1.8318, 1)
+shape = SubResource("RectangleShape2D_pch63")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("6_gydwi")
+
+[connection signal="area_entered" from="Basket/CatchArea2D" to="Basket" method="_on_catch_area_2d_area_entered"]

@@ -1,0 +1,60 @@
+[gd_scene load_steps=10 format=3 uid="uid://dgudwhedvs1ea"]
+
+[ext_resource type="Script" path="res://Scripts/Basket.gd" id="1_d0tcw"]
+[ext_resource type="Script" path="res://Scripts/Main.gd" id="1_syjek"]
+[ext_resource type="Texture2D" uid="uid://che82q8wwannu" path="res://Assets/basket.png" id="2_iwhb3"]
+[ext_resource type="Script" path="res://CatchArea2D.gd" id="3_24f3o"]
+[ext_resource type="Script" path="res://Scripts/Spawner.gd" id="3_skaj7"]
+[ext_resource type="PackedScene" uid="uid://b4nsj5mrbdm4s" path="res://Fruit.tscn" id="4_njbj4"]
+[ext_resource type="Script" path="res://UI.gd" id="6_gydwi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gdkue"]
+size = Vector2(13.9064, 1.35373)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uknxf"]
+
+[node name="Main" type="Node2D"]
+scale = Vector2(0.512101, 1.46517)
+script = ExtResource("1_syjek")
+
+[node name="Basket" type="CharacterBody2D" parent="."]
+position = Vector2(3.90548, -46.4109)
+scale = Vector2(0.983685, 1.01367)
+script = ExtResource("1_d0tcw")
+
+[node name="Sprite2D" type="Sprite2D" parent="Basket"]
+position = Vector2(617.375, 574.334)
+scale = Vector2(2.37214, 0.909688)
+texture = ExtResource("2_iwhb3")
+
+[node name="CatchArea" type="Area2D" parent="Basket"]
+scale = Vector2(20.327, 25.8635)
+script = ExtResource("3_24f3o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Basket/CatchArea"]
+position = Vector2(30.3722, 22.3105)
+scale = Vector2(0.801883, 0.762175)
+shape = SubResource("RectangleShape2D_gdkue")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Basket"]
+position = Vector2(621.345, 602.613)
+scale = Vector2(11.3227, 1)
+shape = SubResource("RectangleShape2D_uknxf")
+
+[node name="FruitSpawner" type="Node2D" parent="."]
+position = Vector2(-886.544, -134.455)
+scale = Vector2(0.91253, 0.748847)
+script = ExtResource("3_skaj7")
+fruit_scene = ExtResource("4_njbj4")
+spawn_interval = 2.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+scale = Vector2(2.5375, 2.64131)
+text = "Score: 0"
+script = ExtResource("6_gydwi")
+
+[connection signal="body_entered" from="Basket/CatchArea" to="." method="_on_catch_area_body_entered"]

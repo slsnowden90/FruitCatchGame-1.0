@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://40r5hpdh0jr4"]
+
+[ext_resource type="Texture2D" uid="uid://bk63qb5wst2sn" path="res://RaspSm.png" id="1_l53xr"]
+[ext_resource type="Script" path="res://rasp_scene.gd" id="1_xweyy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1txvx"]
+
+[node name="RaspScene" type="Node2D"]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+script = ExtResource("1_xweyy")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+scale = Vector2(0.36, 0.336364)
+texture = ExtResource("1_l53xr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+scale = Vector2(1.36, 2.04)
+shape = SubResource("CircleShape2D_1txvx")
