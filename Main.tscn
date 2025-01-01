@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dgudwhedvs1ea"]
+[gd_scene load_steps=12 format=3 uid="uid://dgudwhedvs1ea"]
 
 [ext_resource type="Script" path="res://Scripts/Basket.gd" id="1_d0tcw"]
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_syjek"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b4nsj5mrbdm4s" path="res://Fruit.tscn" id="4_njbj4"]
 [ext_resource type="PackedScene" uid="uid://40r5hpdh0jr4" path="res://rasp_scene.tscn" id="7_gfv3q"]
 [ext_resource type="PackedScene" uid="uid://cffwa40cpf51v" path="res://decay_pear.tscn" id="8_1hx68"]
+[ext_resource type="Texture2D" uid="uid://ceogafq0o2lhx" path="res://Assets/JungleBG.png" id="9_rc6c6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gdkue"]
 size = Vector2(13.9064, 1.35373)
@@ -70,5 +71,11 @@ offset_bottom = 1754.0
 scale = Vector2(0.05, 0.045)
 theme_override_font_sizes/font_size = 665
 text = "Lives: 3"
+
+[node name="JungleBg" type="Sprite2D" parent="."]
+show_behind_parent = true
+position = Vector2(593.633, 212.945)
+scale = Vector2(0.402113, 0.222712)
+texture = ExtResource("9_rc6c6")
 
 [connection signal="body_entered" from="Basket/CatchArea" to="." method="_on_catch_area_body_entered"]

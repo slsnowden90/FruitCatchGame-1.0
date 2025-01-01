@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://er5nhd3nqjk0"]
+[gd_scene load_steps=3 format=3 uid="uid://er5nhd3nqjk0"]
 
 [ext_resource type="Script" path="res://GameOver.gd" id="1_e4vx7"]
+[ext_resource type="Texture2D" uid="uid://ceogafq0o2lhx" path="res://Assets/JungleBG.png" id="2_y2lk7"]
 
 [node name="GameOver" type="Control"]
 layout_mode = 3
@@ -8,29 +9,44 @@ anchors_preset = 0
 script = ExtResource("1_e4vx7")
 
 [node name="TitleLabel" type="Label" parent="."]
-offset_left = 48.0
-offset_top = 384.0
-offset_right = 1047.0
-offset_bottom = 611.0
+layout_mode = 0
+offset_left = 64.0
+offset_top = 128.0
+offset_right = 1063.0
+offset_bottom = 355.0
 scale = Vector2(0.5, 0.5)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 50
 theme_override_font_sizes/font_size = 166
 text = "GAME OVER!"
 
 [node name="FinalScoreLabel" type="Label" parent="."]
-offset_left = 248.0
-offset_top = 504.0
-offset_right = 288.0
-offset_bottom = 527.0
+layout_mode = 0
+offset_left = 160.0
+offset_top = 280.0
+offset_right = 389.0
+offset_bottom = 330.0
+theme_override_colors/font_color = Color(1, 0.94902, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 36
 text = "Final Score: 0"
 
 [node name="FruitStatsLabel" type="Label" parent="."]
-offset_left = 248.0
-offset_top = 552.0
-offset_right = 342.0
-offset_bottom = 627.0
+layout_mode = 0
+offset_left = 112.0
+offset_top = 368.0
+offset_right = 702.0
+offset_bottom = 788.0
+scale = Vector2(0.5, 0.453)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 25
+theme_override_font_sizes/font_size = 101
 text = "apple: 0
 raspberry: 0
 decayed: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="RestartButton" type="Button" parent="."]
 layout_mode = 0
@@ -38,17 +54,31 @@ offset_left = 240.0
 offset_top = 640.0
 offset_right = 354.0
 offset_bottom = 671.0
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 36
 text = "Restart Game"
-
-[node name="TextureButton" type="TextureButton" parent="RestartButton"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
 
 [node name="QuitButton" type="Button" parent="."]
 layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
 
+[node name="JungleBg" type="Sprite2D" parent="."]
+show_behind_parent = true
+position = Vector2(304, 496)
+scale = Vector2(0.19105, 0.266376)
+texture = ExtResource("2_y2lk7")
+
+[node name="MainMenu" type="Button" parent="."]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 680.0
+offset_right = 435.0
+offset_bottom = 732.0
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 31
+text = "Main Menu"
+
 [connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="MainMenu" to="." method="_on_main_menu_pressed"]

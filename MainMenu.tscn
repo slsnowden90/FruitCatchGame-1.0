@@ -1,41 +1,69 @@
-[gd_scene load_steps=2 format=3 uid="uid://yupt0k1aop2n"]
+[gd_scene load_steps=9 format=3 uid="uid://yupt0k1aop2n"]
 
 [ext_resource type="Script" path="res://MainMenu.gd" id="1_jjcn4"]
+[ext_resource type="Texture2D" uid="uid://ceogafq0o2lhx" path="res://Assets/JungleBG.png" id="2_iwfvh"]
+[ext_resource type="Theme" uid="uid://dx6vpre1uthds" path="res://Button.tres" id="2_ln3ut"]
+[ext_resource type="Theme" uid="uid://dv2vqhnlbxof1" path="res://Quit.tres" id="3_4p0n7"]
+[ext_resource type="Texture2D" uid="uid://dwfpxkbah0gg4" path="res://Assets/fruit_apple.png" id="3_mspcc"]
+[ext_resource type="Texture2D" uid="uid://bk63qb5wst2sn" path="res://RaspSm.png" id="4_2sld2"]
+[ext_resource type="Texture2D" uid="uid://cewyvlb6ri7bo" path="res://decaying_pearLrg.png" id="5_thd8q"]
+[ext_resource type="Texture2D" uid="uid://cjs1hy6i44rxl" path="res://Assets/FruitfulRushLogo.png" id="8_bva8e"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_jjcn4")
 
-[node name="TitleLabel" type="Label" parent="."]
-offset_left = 16.0
-offset_top = 152.0
-offset_right = 8334.0
-offset_bottom = 1058.0
-scale = Vector2(0.0679354, 0.102108)
-theme_override_colors/font_color = Color(0.921569, 0.945098, 0, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 45
-theme_override_font_sizes/font_size = 630
-text = "Welcome to Fruit Catcher!"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="StartButton" type="Button" parent="."]
-offset_left = 272.0
-offset_top = 256.0
-offset_right = 318.0
-offset_bottom = 287.0
-text = "Start"
+layout_mode = 0
+offset_left = 200.0
+offset_top = 368.0
+offset_right = 840.0
+offset_bottom = 534.0
+scale = Vector2(0.306678, 0.713542)
+theme = ExtResource("2_ln3ut")
+theme_override_colors/font_hover_color = Color(0, 0, 0.215686, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0.431373, 1)
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 116
 
 [node name="QuitButton" type="Button" parent="."]
-offset_left = 272.0
-offset_top = 296.0
-offset_right = 314.0
-offset_bottom = 327.0
-scale = Vector2(1.08, 1)
-text = "Quit"
+layout_mode = 0
+offset_left = 224.0
+offset_top = 496.0
+offset_right = 506.0
+offset_bottom = 684.0
+scale = Vector2(0.511261, 0.414663)
+theme = ExtResource("3_4p0n7")
+theme_override_font_sizes/font_size = 131
+
+[node name="JungleBg" type="Sprite2D" parent="."]
+show_behind_parent = true
+position = Vector2(304, 496)
+scale = Vector2(0.19105, 0.266376)
+texture = ExtResource("2_iwfvh")
+
+[node name="FruitApple" type="Sprite2D" parent="."]
+position = Vector2(168, 576)
+rotation = -0.154737
+scale = Vector2(0.317578, 0.289812)
+texture = ExtResource("3_mspcc")
+
+[node name="RaspSm" type="Sprite2D" parent="."]
+position = Vector2(440, 576)
+rotation = 0.254636
+scale = Vector2(1.02735, 0.793274)
+texture = ExtResource("4_2sld2")
+
+[node name="DecayingPearLrg" type="Sprite2D" parent="."]
+position = Vector2(312, 736)
+scale = Vector2(0.394601, 0.328277)
+texture = ExtResource("5_thd8q")
+
+[node name="FruitfulRushLogo" type="Sprite2D" parent="."]
+position = Vector2(288, 176)
+scale = Vector2(0.525714, 0.440145)
+texture = ExtResource("8_bva8e")
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
