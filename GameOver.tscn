@@ -1,0 +1,54 @@
+[gd_scene load_steps=2 format=3 uid="uid://er5nhd3nqjk0"]
+
+[ext_resource type="Script" path="res://GameOver.gd" id="1_e4vx7"]
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_e4vx7")
+
+[node name="TitleLabel" type="Label" parent="."]
+offset_left = 48.0
+offset_top = 384.0
+offset_right = 1047.0
+offset_bottom = 611.0
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 166
+text = "GAME OVER!"
+
+[node name="FinalScoreLabel" type="Label" parent="."]
+offset_left = 248.0
+offset_top = 504.0
+offset_right = 288.0
+offset_bottom = 527.0
+text = "Final Score: 0"
+
+[node name="FruitStatsLabel" type="Label" parent="."]
+offset_left = 248.0
+offset_top = 552.0
+offset_right = 342.0
+offset_bottom = 627.0
+text = "apple: 0
+raspberry: 0
+decayed: 0"
+
+[node name="RestartButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 240.0
+offset_top = 640.0
+offset_right = 354.0
+offset_bottom = 671.0
+text = "Restart Game"
+
+[node name="TextureButton" type="TextureButton" parent="RestartButton"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="QuitButton" type="Button" parent="."]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

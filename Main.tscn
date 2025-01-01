@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dgudwhedvs1ea"]
+[gd_scene load_steps=11 format=3 uid="uid://dgudwhedvs1ea"]
 
 [ext_resource type="Script" path="res://Scripts/Basket.gd" id="1_d0tcw"]
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_syjek"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/Spawner.gd" id="3_skaj7"]
 [ext_resource type="PackedScene" uid="uid://b4nsj5mrbdm4s" path="res://Fruit.tscn" id="4_njbj4"]
 [ext_resource type="PackedScene" uid="uid://40r5hpdh0jr4" path="res://rasp_scene.tscn" id="7_gfv3q"]
+[ext_resource type="PackedScene" uid="uid://cffwa40cpf51v" path="res://decay_pear.tscn" id="8_1hx68"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gdkue"]
 size = Vector2(13.9064, 1.35373)
@@ -47,7 +48,7 @@ shape = SubResource("RectangleShape2D_uknxf")
 position = Vector2(-4.76837e-07, 5.96046e-08)
 scale = Vector2(0.91253, 0.748847)
 script = ExtResource("3_skaj7")
-fruit_scenes = Array[PackedScene]([ExtResource("7_gfv3q"), ExtResource("4_njbj4")])
+fruit_scenes = Array[PackedScene]([ExtResource("7_gfv3q"), ExtResource("4_njbj4"), ExtResource("8_1hx68")])
 spawn_interval = 2.0
 
 [node name="UI" type="CanvasLayer" parent="."]
@@ -57,8 +58,17 @@ offset_left = 17.0
 offset_top = 847.0
 offset_right = 99.0
 offset_bottom = 864.0
-scale = Vector2(2.5375, 2.64131)
-theme_override_font_sizes/font_size = 12
+scale = Vector2(0.048, 0.05)
+theme_override_font_sizes/font_size = 665
 text = "Score: 0"
+
+[node name="LivesLabel" type="Label" parent="UI"]
+offset_left = 448.0
+offset_top = 848.0
+offset_right = 2792.0
+offset_bottom = 1754.0
+scale = Vector2(0.05, 0.045)
+theme_override_font_sizes/font_size = 665
+text = "Lives: 3"
 
 [connection signal="body_entered" from="Basket/CatchArea" to="." method="_on_catch_area_body_entered"]

@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=3 uid="uid://yupt0k1aop2n"]
+
+[ext_resource type="Script" path="res://MainMenu.gd" id="1_jjcn4"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_jjcn4")
+
+[node name="TitleLabel" type="Label" parent="."]
+offset_left = 16.0
+offset_top = 152.0
+offset_right = 8334.0
+offset_bottom = 1058.0
+scale = Vector2(0.0679354, 0.102108)
+theme_override_colors/font_color = Color(0.921569, 0.945098, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 45
+theme_override_font_sizes/font_size = 630
+text = "Welcome to Fruit Catcher!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StartButton" type="Button" parent="."]
+offset_left = 272.0
+offset_top = 256.0
+offset_right = 318.0
+offset_bottom = 287.0
+text = "Start"
+
+[node name="QuitButton" type="Button" parent="."]
+offset_left = 272.0
+offset_top = 296.0
+offset_right = 314.0
+offset_bottom = 327.0
+scale = Vector2(1.08, 1)
+text = "Quit"
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

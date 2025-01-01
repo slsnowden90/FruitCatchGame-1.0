@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cffwa40cpf51v"]
+
+[ext_resource type="Script" path="res://decay_pear.gd" id="1_034g1"]
+[ext_resource type="Texture2D" uid="uid://drwhdjgdofbe1" path="res://decaying_pearSm.png" id="2_yeqpj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mu0md"]
+radius = 40.0
+
+[node name="DecayPear" type="Node2D"]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+script = ExtResource("1_034g1")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+texture = ExtResource("2_yeqpj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(-8, 8)
+scale = Vector2(1, 1.28)
+shape = SubResource("CircleShape2D_mu0md")
