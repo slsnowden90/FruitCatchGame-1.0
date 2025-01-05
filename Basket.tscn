@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://che82q8wwannu" path="res://Assets/basket.png" id="1_rfq6a"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6f6sx"]
-radius = 60.0833
+radius = 8.0
 
 [node name="Basket" type="Node2D"]
 
@@ -17,5 +17,5 @@ scale = Vector2(0.165527, 0.161621)
 texture = ExtResource("1_rfq6a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Basket"]
-position = Vector2(552, 512)
+position = Vector2(554, 514)
 shape = SubResource("CircleShape2D_6f6sx")

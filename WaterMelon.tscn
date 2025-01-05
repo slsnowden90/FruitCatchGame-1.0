@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://baacylbq2g712"]
+
+[ext_resource type="Script" path="res://WaterMelon.gd" id="1_ecqca"]
+[ext_resource type="Texture2D" uid="uid://b7n1uoqqf6ukg" path="res://Assets/WatermelonSm.png" id="2_ogclw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mt1ls"]
+radius = 1.31439
+
+[node name="WaterMelon" type="Node2D"]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+script = ExtResource("1_ecqca")
+
+[node name="WatermelonSm" type="Sprite2D" parent="RigidBody2D"]
+position = Vector2(232, 160)
+scale = Vector2(0.859, 0.884)
+texture = ExtResource("2_ogclw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(232, 160)
+scale = Vector2(46.944, -52.969)
+shape = SubResource("CircleShape2D_mt1ls")

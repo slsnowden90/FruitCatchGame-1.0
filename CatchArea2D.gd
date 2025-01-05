@@ -5,6 +5,10 @@ extends Area2D
 func lose_life() -> void:
 	lives -= 1
 	update_lives_label()
+	
+func gain_life() -> void:
+	lives += 1
+	update_lives_label()
 
 func _on_CatchArea_body_entered(body: Node) -> void:
 	# Check if it's a fruit
@@ -19,6 +23,10 @@ func _on_CatchArea_body_entered(body: Node) -> void:
 		
 		if body.is_decayed == true:
 			lose_life()
+			body.queue_free()
+			
+		if body.is_water == true:
+			gain_life()
 			body.queue_free()
 			
 		

@@ -7,6 +7,7 @@ extends RigidBody2D
 @export var lives: int = 5
 @export var is_rasp: bool = false
 @export var is_apple: bool = false
+@export var is_water: bool = false
 
 func _ready() -> void:
 	gravity_scale = randf_range(min_gravity, max_gravity)

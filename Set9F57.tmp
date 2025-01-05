@@ -1,0 +1,60 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsfr8c1sipf2l"]
+
+[ext_resource type="Script" path="res://SettingsMenu.gd" id="1_h5erd"]
+[ext_resource type="Texture2D" uid="uid://ceogafq0o2lhx" path="res://Assets/JungleBG.png" id="2_7orqg"]
+
+[node name="SettingsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 224.0
+offset_top = 176.0
+offset_right = 224.0
+offset_bottom = 176.0
+scale = Vector2(0.291526, 0.388219)
+script = ExtResource("1_h5erd")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+top_level = true
+layout_mode = 0
+offset_left = 184.0
+offset_top = 352.0
+offset_right = 335.0
+offset_bottom = 445.0
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Settings"
+
+[node name="ControlSchemeOption" type="OptionButton" parent="VBoxContainer"]
+layout_mode = 2
+item_count = 3
+popup/item_0/text = "A/D Keys"
+popup/item_0/id = 0
+popup/item_1/text = "Arrow Keys"
+popup/item_1/id = 1
+popup/item_2/text = "Mouse Follow"
+popup/item_2/id = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="ApplyButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Apply"
+
+[node name="CancelButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Cancel"
+
+[node name="MainButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Main Menu"
+
+[node name="JungleBg" type="Sprite2D" parent="."]
+visibility_layer = 16
+position = Vector2(32, 112)
+texture = ExtResource("2_7orqg")
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ApplyButton" to="." method="_on_apply_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/MainButton" to="." method="_on_main_button_pressed"]

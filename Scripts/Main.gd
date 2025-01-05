@@ -7,13 +7,28 @@ var lives: int = 3
 var fruit_counters := {
 	"apple": 0,
 	"raspberry": 0,
+	"watermelon": 0,
 	"decayed": 0
 }
 
+
 func _ready() -> void:
-	# Optional: if you want to set "Score: 0" at start
-	update_score_label()
-	update_lives_label()
+	var texture_rect = $TextureRect  # Reference the TextureRect node
+	var texture = texture_rect.texture
+
+	if texture == null:
+		print("No texture assigned to the TextureRect node!")
+		return
+
+	var screen_size = get_viewport().get_visible_rect().size
+	var texture_size = texture.get_size()
+
+	# Debugging: Log sizes
+	print("Screen size:", screen_size)
+	print("Texture size:", texture_size)
+
+	# TextureRect already handles scaling if Stretch Mode is set to Cover
+	
 
 func increment_score(value: int) -> void:
 	score += value
@@ -22,9 +37,13 @@ func increment_score(value: int) -> void:
 func lose_life() -> void:
 	lives -= 1
 	update_lives_label()
-	
 	if lives <= 0:
 		game_over()
+	
+func gain_life() -> void:
+	lives += 1
+	update_lives_label()
+	
 
 func update_lives_label() -> void:
 	$UI/LivesLabel.text = "Lives: %d" % lives
@@ -64,5 +83,11 @@ func _on_catch_area_body_entered(body):
 			points = body.point_value
 				
 		increment_score(points)
+		body.queue_free()
+	
+	if body.is_water == true and score > 100:
+		print("You Just Caught a watermelon")
+		gain_life()
+		print("You just gained a life")
 		body.queue_free()
 		

@@ -1,0 +1,97 @@
+[gd_scene load_steps=10 format=3 uid="uid://dgudwhedvs1ea"]
+
+[ext_resource type="Script" path="res://Scripts/Basket.gd" id="1_d0tcw"]
+[ext_resource type="Script" path="res://Scripts/Main.gd" id="1_syjek"]
+[ext_resource type="Texture2D" uid="uid://che82q8wwannu" path="res://Assets/basket.png" id="2_iwhb3"]
+[ext_resource type="Script" path="res://CatchArea2D.gd" id="3_24f3o"]
+[ext_resource type="Script" path="res://Scripts/Spawner.gd" id="3_skaj7"]
+[ext_resource type="Texture2D" uid="uid://ceogafq0o2lhx" path="res://Assets/JungleBG.png" id="9_rc6c6"]
+[ext_resource type="Script" path="res://UI.gd" id="10_oruyi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gdkue"]
+size = Vector2(13.9064, 1.35373)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uknxf"]
+
+[node name="Main" type="Node2D"]
+position = Vector2(72, 352)
+scale = Vector2(0.512101, 1.46517)
+script = ExtResource("1_syjek")
+
+[node name="Basket" type="CharacterBody2D" parent="."]
+position = Vector2(304.627, 381.526)
+scale = Vector2(0.983685, 1.01367)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_d0tcw")
+
+[node name="Sprite2D" type="Sprite2D" parent="Basket"]
+position = Vector2(617.375, 574.334)
+scale = Vector2(2.37214, 0.909688)
+texture = ExtResource("2_iwhb3")
+
+[node name="CatchArea" type="Area2D" parent="Basket"]
+scale = Vector2(20.3904, 25.8717)
+script = ExtResource("3_24f3o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Basket/CatchArea"]
+position = Vector2(30.3722, 22.3105)
+scale = Vector2(0.801883, 0.762175)
+shape = SubResource("RectangleShape2D_gdkue")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Basket"]
+position = Vector2(621.345, 602.613)
+scale = Vector2(11.3227, 1)
+shape = SubResource("RectangleShape2D_uknxf")
+
+[node name="FruitSpawner" type="Node2D" parent="."]
+position = Vector2(-4.76837e-07, 5.96046e-08)
+scale = Vector2(0.91253, 0.748847)
+script = ExtResource("3_skaj7")
+
+[node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource("10_oruyi")
+
+[node name="ScoreLabel" type="Label" parent="UI"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = -84.0
+offset_right = 2557.0
+offset_bottom = 822.0
+grow_vertical = 0
+scale = Vector2(0.05, 0.052)
+theme_override_font_sizes/font_size = 665
+text = "Score: 0"
+
+[node name="LivesLabel" type="Label" parent="UI"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -217.0
+offset_top = -84.0001
+offset_right = 2290.0
+offset_bottom = 822.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.05, 0.045)
+theme_override_font_sizes/font_size = 665
+text = "Lives: 3"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -132.786
+offset_top = -236.833
+offset_right = -92.7863
+offset_bottom = -196.833
+scale = Vector2(52.9, 32.7)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+texture = ExtResource("9_rc6c6")
+expand_mode = 1
+stretch_mode = 6
+
+[connection signal="body_entered" from="Basket/CatchArea" to="." method="_on_catch_area_body_entered"]

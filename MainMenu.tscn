@@ -1,26 +1,54 @@
-[gd_scene load_steps=9 format=3 uid="uid://yupt0k1aop2n"]
+[gd_scene load_steps=10 format=3 uid="uid://yupt0k1aop2n"]
 
 [ext_resource type="Script" path="res://MainMenu.gd" id="1_jjcn4"]
 [ext_resource type="Texture2D" uid="uid://ceogafq0o2lhx" path="res://Assets/JungleBG.png" id="2_iwfvh"]
-[ext_resource type="Theme" uid="uid://dx6vpre1uthds" path="res://Button.tres" id="2_ln3ut"]
+[ext_resource type="Theme" uid="uid://bv8o4b88oun10" path="res://Button.tres" id="2_ln3ut"]
 [ext_resource type="Theme" uid="uid://dv2vqhnlbxof1" path="res://Quit.tres" id="3_4p0n7"]
 [ext_resource type="Texture2D" uid="uid://dwfpxkbah0gg4" path="res://Assets/fruit_apple.png" id="3_mspcc"]
 [ext_resource type="Texture2D" uid="uid://bk63qb5wst2sn" path="res://RaspSm.png" id="4_2sld2"]
 [ext_resource type="Texture2D" uid="uid://cewyvlb6ri7bo" path="res://decaying_pearLrg.png" id="5_thd8q"]
 [ext_resource type="Texture2D" uid="uid://cjs1hy6i44rxl" path="res://Assets/FruitfulRushLogo.png" id="8_bva8e"]
+[ext_resource type="Theme" uid="uid://dv5ag5vof0c1w" path="res://Options.tres" id="9_rkfwe"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+offset_left = 68.0
+offset_top = -4.0
+offset_right = 68.0
+offset_bottom = -4.0
+scale = Vector2(1.5695, 1.9423)
 script = ExtResource("1_jjcn4")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -43.3259
+offset_top = 3.60398
+offset_right = -3.32589
+offset_bottom = 43.604
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(17.2555, 30.9501)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+texture = ExtResource("2_iwfvh")
+expand_mode = 1
+stretch_mode = 6
 
 [node name="StartButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 200.0
-offset_top = 368.0
-offset_right = 840.0
-offset_bottom = 534.0
-scale = Vector2(0.306678, 0.713542)
+offset_left = 198.789
+offset_top = 350.615
+offset_right = 838.789
+offset_bottom = 516.615
+scale = Vector2(0.304675, 0.590896)
 theme = ExtResource("2_ln3ut")
 theme_override_colors/font_hover_color = Color(0, 0, 0.215686, 1)
 theme_override_colors/icon_hover_color = Color(0, 0, 0.431373, 1)
@@ -29,41 +57,45 @@ theme_override_font_sizes/font_size = 116
 
 [node name="QuitButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 224.0
-offset_top = 496.0
-offset_right = 506.0
-offset_bottom = 684.0
+offset_left = 226.187
+offset_top = 659.012
+offset_right = 508.187
+offset_bottom = 847.012
 scale = Vector2(0.511261, 0.414663)
 theme = ExtResource("3_4p0n7")
 theme_override_font_sizes/font_size = 131
 
-[node name="JungleBg" type="Sprite2D" parent="."]
-show_behind_parent = true
-position = Vector2(304, 496)
-scale = Vector2(0.19105, 0.266376)
-texture = ExtResource("2_iwfvh")
-
 [node name="FruitApple" type="Sprite2D" parent="."]
-position = Vector2(168, 576)
+position = Vector2(165.021, 786.181)
 rotation = -0.154737
 scale = Vector2(0.317578, 0.289812)
 texture = ExtResource("3_mspcc")
 
 [node name="RaspSm" type="Sprite2D" parent="."]
-position = Vector2(440, 576)
+position = Vector2(437.082, 793.904)
 rotation = 0.254636
 scale = Vector2(1.02735, 0.793274)
 texture = ExtResource("4_2sld2")
 
 [node name="DecayingPearLrg" type="Sprite2D" parent="."]
-position = Vector2(312, 736)
+position = Vector2(309.015, 961.746)
 scale = Vector2(0.394601, 0.328277)
 texture = ExtResource("5_thd8q")
 
 [node name="FruitfulRushLogo" type="Sprite2D" parent="."]
 position = Vector2(288, 176)
-scale = Vector2(0.525714, 0.440145)
+scale = Vector2(0.540864, 0.34224)
 texture = ExtResource("8_bva8e")
+
+[node name="OptionsButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 198.789
+offset_top = 513.824
+offset_right = 647.789
+offset_bottom = 911.824
+scale = Vector2(0.436615, 0.275369)
+theme = ExtResource("9_rkfwe")
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="OptionsButton" to="." method="_on_options_button_pressed"]
