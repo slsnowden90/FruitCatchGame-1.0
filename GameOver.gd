@@ -5,9 +5,11 @@ var counters = Global.fruit_counters
 
 func _ready() -> void:
 	$FinalScoreLabel.text = "Final Score: %d" % Global.final_score
-	$FruitStatsLabel.text = "Apples: %d\nRaspberries: %d" % [
-		Global.fruit_counters["apple"],
-		Global.fruit_counters["raspberry"]
+	$FruitStatsLabel.text = "Apples: %d\nRaspberries: %d\nWatermelon: %d\nDecayed_Pear: %d" % [
+		Global.fruit_counters["Apple"],
+		Global.fruit_counters["Raspberry"],
+		Global.fruit_counters["Watermelon"],
+		Global.fruit_counters["Decayed_pear"]
 	]
 
 func _on_quit_button_pressed():

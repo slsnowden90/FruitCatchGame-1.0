@@ -8,11 +8,14 @@ extends RigidBody2D
 @export var is_apple: bool = true
 @export var is_water: bool = false
 
-func _ready() -> void:
-	gravity_scale = randf_range(min_gravity, max_gravity)
+@export var base_speed: float = 50.0  # Initial falling speed
+var current_speed: float = base_speed
 
-# If you want to detect collisions with the basket here:
-func _on_Fruit_body_entered(body: Node) -> void:
-	if body.name == "Basket":
-		# Increase score, etc.
-		queue_free()
+func _ready():
+	# Apply initial velocity
+	apply_central_impulse(Vector2(0, current_speed))
+
+func adjust_speed(speed_multiplier: float):
+	# Increase the speed dynamically
+	current_speed *= speed_multiplier
+	linear_velocity = Vector2(0, current_speed)

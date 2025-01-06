@@ -17,14 +17,6 @@ func _ready():
 
 # Connect the Apply and Cancel buttons
 
-func _on_CancelButton_pressed():
-	hide()  # Simply close the settings menu without saving
-
-
-func _on_main_button_pressed():
-	get_tree().change_scene_to_file("res://MainMenu.tscn")
-
-
 
 func _on_apply_button_pressed():
 	var selected_option = $VBoxContainer/ControlSchemeOption.get_selected()
@@ -37,3 +29,7 @@ func _on_apply_button_pressed():
 		2:
 			selected_scheme = Settings.ControlScheme.MOUSE_FOLLOW
 	Settings.set_control_scheme(selected_scheme)
+
+
+func _on_cancel_button_pressed():
+	get_tree().change_scene_to_file("res://MainMenu.tscn")

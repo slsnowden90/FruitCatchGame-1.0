@@ -5,10 +5,10 @@ var lives: int = 3
 
 # Dictionary to track how many of each fruit you caught
 var fruit_counters := {
-	"apple": 0,
-	"raspberry": 0,
-	"watermelon": 0,
-	"decayed": 0
+	"Apple": 0,
+	"Raspberry": 0,
+	"Watermelon": 0,
+	"Decayed_pear": 0
 }
 
 
@@ -41,7 +41,8 @@ func lose_life() -> void:
 		game_over()
 	
 func gain_life() -> void:
-	lives += 1
+	if lives < 3:
+		lives += 1
 	update_lives_label()
 	
 
@@ -64,14 +65,19 @@ func update_score_label() -> void:
 func _on_catch_area_body_entered(body):
 	# If the body is a decayed fruit
 	if body.is_rasp == true:
-		fruit_counters["raspberry"] += 1
+		fruit_counters["Raspberry"] += 1
 		
 	if body.is_apple == true:
-		fruit_counters["apple"] += 1	
+		fruit_counters["Apple"] += 1	
+		
+	if body.is_water == true:
+		fruit_counters["Watermelon"] += 1	
+	
 		
 	if body.is_decayed == true:
 		# or if "is_decayed" in body and body.is_decayed == true
 		print("This went OFF!")
+		fruit_counters["Decayed_pear"] += 1	
 		lose_life()
 		body.queue_free()
 

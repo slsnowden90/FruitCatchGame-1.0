@@ -12,7 +12,7 @@ radius = 8.0
 script = ExtResource("1_g2336")
 
 [node name="Sprite2D" type="Sprite2D" parent="Basket"]
-position = Vector2(554, 513)
+position = Vector2(519, 2221)
 scale = Vector2(0.165527, 0.161621)
 texture = ExtResource("1_rfq6a")
 

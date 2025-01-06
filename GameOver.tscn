@@ -14,11 +14,12 @@ scale = Vector2(2.45953, 3.31021)
 script = ExtResource("1_e4vx7")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
 offset_left = -24.8015
 offset_top = -6.6461
 offset_right = 15.1985
 offset_bottom = 33.3539
-scale = Vector2(10.9974, 18.1422)
+scale = Vector2(10.9974, 18.1872)
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource("2_y2lk7")
@@ -26,52 +27,55 @@ expand_mode = 1
 stretch_mode = 6
 
 [node name="TitleLabel" type="Label" parent="."]
+editor_description = "Game over!"
 layout_mode = 0
-offset_left = 60.5807
-offset_top = 51.0541
-offset_right = 1059.58
-offset_bottom = 278.054
-scale = Vector2(0.288854, 0.255985)
+offset_left = -36.999
+offset_top = 22.6571
+offset_right = 962.001
+offset_bottom = 249.657
+scale = Vector2(0.46642, 0.427596)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 50
-theme_override_font_sizes/font_size = 166
+theme_override_constants/outline_size = 26
+theme_override_font_sizes/font_size = 97
 text = "GAME OVER!"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="FinalScoreLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 91.0744
+offset_left = 80.9098
 offset_top = 119.328
-offset_right = 320.074
-offset_bottom = 169.328
-scale = Vector2(0.908834, 0.945609)
+offset_right = 549.91
+offset_bottom = 221.328
+scale = Vector2(0.478735, 0.52)
 theme_override_colors/font_color = Color(1, 0.94902, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/font_size = 74
 text = "Final Score: 0"
 
 [node name="FruitStatsLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 61.3939
-offset_top = 192.435
-offset_right = 651.394
-offset_bottom = 612.435
-scale = Vector2(0.458341, 0.312192)
+offset_left = 56.5149
+offset_top = 187.601
+offset_right = 647.705
+offset_bottom = 607.601
+scale = Vector2(0.487708, 0.259434)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 25
-theme_override_font_sizes/font_size = 101
-text = "apple: 0
-raspberry: 0
-decayed: 0"
-horizontal_alignment = 1
+theme_override_font_sizes/font_size = 72
+text = "Apple: 0
+Raspberry: 0
+Watermelon: 0
+Decayed: 0"
 vertical_alignment = 1
 
 [node name="RestartButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 124.821
-offset_top = 376.411
-offset_right = 370.821
-offset_bottom = 434.411
+offset_left = 130.919
+offset_top = 374.598
+offset_right = 376.919
+offset_bottom = 432.598
 scale = Vector2(0.5, 0.5)
 theme_override_font_sizes/font_size = 36
 text = "Restart Game"

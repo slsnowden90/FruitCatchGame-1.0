@@ -1,13 +1,14 @@
 extends Node2D
 
 @export var spawn_interval: float = 1.5
+@export var min_spawn_interval: float = 0.1
 @export var x_min: float = 0.0
-@export var x_max: float = 1700.0
+@export var x_max: float = 1900.0
 
 @export var fruits_info: Array[Dictionary] = [
 	{
 		"scene": preload("res://Fruit.tscn"),
-		"chance": 0.6,
+		"chance": 0.4,
 		"min_score": 0
 	},
 	{
@@ -18,12 +19,12 @@ extends Node2D
 	{
 		"scene": preload("res://WaterMelon.tscn"),
 		"chance": 0.1,
-		"min_score": 50,
+		"min_score": 100,
 		"is_watermelon": true
 	},
 	{
 		"scene": preload("res://decay_pear.tscn"),
-		"chance": 0.7,
+		"chance": 0.3,
 		"min_score": 0
 	}
 ]
@@ -34,6 +35,9 @@ var timer: float = 0.0
 # Variables to limit watermelons per score bracket
 var watermelons_spawned_in_bucket: int = 0
 var last_score_bucket: int = 0
+var current_spawn_interval: float = spawn_interval
+var max_spawn: int = 3  # Declared here to make it accessible across functions
+var min_fruits_per_spawn: int = 1
 @export var watermelons_per_100_points: int = 1  # e.g., 2 per bracket
 
 func _physics_process(delta: float) -> void:
@@ -57,16 +61,17 @@ func _physics_process(delta: float) -> void:
 	if timer >= spawn_interval:
 		spawn_fruit_burst(current_score)
 		timer = 0.0
+	
+	# Adjust difficulty
+	adjust_difficulty(current_score)
 
 func spawn_fruit_burst(current_score: int) -> void:
 	if fruits_info.is_empty():
 		print("No fruit data assigned!")
 		return
 
-	# For a simple approach, spawn a random batch size, e.g. 1..3
-	var min_spawn = 1
-	var max_spawn = 3
-	var count = randi() % (max_spawn - min_spawn + 1) + min_spawn
+	# Determine the number of fruits to spawn
+	var count = randi() % (max_spawn - min_fruits_per_spawn + 1) + min_fruits_per_spawn
 
 	for i in range(count):
 		var chosen_scene: PackedScene = pick_fruit_scene(current_score)
@@ -77,9 +82,16 @@ func spawn_fruit_burst(current_score: int) -> void:
 			var random_x = randf_range(x_min, x_max)
 			fruit_instance.position = Vector2(random_x, position.y)
 
+			# Calculate speed based on score
+			var calculated_speed = 150.0 + (current_score * 0.5)  # Base speed + ramp-up
+			if fruit_instance.has_method("adjust_speed"):
+				fruit_instance.adjust_speed(calculated_speed)
+
 			add_child(fruit_instance)
 
 	print("Spawned", count, "fruits at once!")
+
+
 
 func pick_fruit_scene(current_score: int) -> PackedScene:
 	var valid_fruits: Array[Dictionary] = []
@@ -116,3 +128,26 @@ func pick_fruit_scene(current_score: int) -> PackedScene:
 			return vf["scene"]
 
 	return valid_fruits[0]["scene"]
+
+func adjust_difficulty(current_score: int) -> void:
+	# Default max spawn
+	max_spawn = 3
+
+	if fruits_info.any(func(fruit_data):
+		return fruit_data.has("scene") and "decay_pear" in fruit_data["scene"].resource_path):
+		if current_score >= 100:
+			max_spawn = 4
+			
+		if current_score >= 250:
+			max_spawn = 5
+			
+		if current_score >= 500:
+			max_spawn = 6
+	print("The max spawn is now " + str(max_spawn))
+
+	# Update spawn interval based on score
+	current_spawn_interval = max(min_spawn_interval, spawn_interval - (current_score * 0.05))
+	print("Adjusted difficulty: Spawn interval =", current_spawn_interval, ", Max spawn =", max_spawn)
+
+
+

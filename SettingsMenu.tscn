@@ -36,43 +36,54 @@ stretch_mode = 6
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 top_level = true
 layout_mode = 0
-offset_left = 248.0
-offset_top = 509.0
-offset_right = 464.0
-offset_bottom = 602.0
-scale = Vector2(2.84594, 3.25607)
+offset_left = 223.0
+offset_top = 89.0
+offset_right = 1524.0
+offset_bottom = 672.0
+scale = Vector2(0.5, 0.572)
 alignment = 1
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 17
+theme_override_font_sizes/font_size = 336
 text = "Settings"
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Control Settings"
 
 [node name="ControlSchemeOption" type="OptionButton" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 36
 item_count = 3
 popup/item_0/text = "A/D Keys"
 popup/item_0/id = 0
 popup/item_1/text = "Arrow Keys"
 popup/item_1/id = 1
-popup/item_2/text = "Mouse Follow"
+popup/item_2/text = "Mouse"
 popup/item_2/id = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="ApplyButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="ApplyButton" type="Button" parent="."]
 layout_mode = 2
+offset_left = 19.1802
+offset_top = 997.094
+offset_right = 124.18
+offset_bottom = 1055.09
+theme_override_font_sizes/font_size = 36
 text = "Apply"
 
-[node name="CancelButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="CancelButton" type="Button" parent="."]
 layout_mode = 2
-text = "Cancel"
+offset_left = 145.45
+offset_top = 997.094
+offset_right = 269.45
+offset_bottom = 1055.09
+theme_override_font_sizes/font_size = 36
+text = "Back"
 
-[node name="MainButton" type="Button" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "Main Menu"
-
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/ApplyButton" to="." method="_on_apply_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/MainButton" to="." method="_on_main_button_pressed"]
+[connection signal="pressed" from="ApplyButton" to="." method="_on_apply_button_pressed"]
+[connection signal="pressed" from="CancelButton" to="." method="_on_cancel_button_pressed"]

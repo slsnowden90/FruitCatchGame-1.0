@@ -2,7 +2,8 @@ extends Node
 
 var final_score: int = 0
 var fruit_counters := {
-	"apple": 0,
-	"raspberry": 0,
-	"decayed": 0
+	"Apple": 0,
+	"Raspberry": 0,
+	"Watermelon": 0,
+	"Decayed_Pear": 0
 }
